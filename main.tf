@@ -1,12 +1,28 @@
-# created template for creating infrastructure for database and schema
-
-provider "snowflake" {
-  account  = "your_account_name"
-  username = "your_username"
-  password = "your_password"
+terraform {
+  required_providers {
+    snowflake = {
+      source = "Snowflake-Labs/snowflake"
+      version = "0.99.0"
+    }
+  }
 }
 
-resource "snowflake_database" "demo" {
-  name = "DEMO_DB"
-  comment = "This is a demo database"
+
+# resources 
+resource "snowflake_warehouse" "warehouse" {
+  name           = "WAREHOUSE DEMO_WH"
+  warehouse_size = "XSMALL"
+  auto_suspend = 300
+  auto_resume = true
 }
+
+resource "snowflake_database" "database" {
+  name = "GLOBAL_RETAIL_DB"
+}
+
+resource "snowflake_schema" "schema" {
+  name     = "TRANSACTIONS_DATA"
+  database = "GLOBAL_RETAIL_DB"
+}
+
+
