@@ -17,9 +17,6 @@ df['CustomerDOB'] = pd.to_datetime(df['CustomerDOB'])
 df['StoreOpenDate'] = pd.to_datetime(df['StoreOpenDate'])
 
 
-# Fill missing or NaT values with the current timestamp
-df['DeliveryDate'] = df['DeliveryDate'].fillna(pd.Timestamp('now'))  
-
 
 # Convert currency to numeric
 df['ProductCost'] = pd.to_numeric(df['ProductCost'].replace('[\$,]', '', regex=True))
@@ -36,9 +33,8 @@ df['CustomerName'] = df['CustomerName'].str.title()
 df['CustomerGender'] = df['CustomerGender'].astype('category')  
 
 
-
 # Check specific columns
-print(df[['OrderDate', 'DeliveryDate', 'CustomerDOB', 'StoreOpenDate']])
+print(df[['OrderDate', 'CustomerDOB', 'StoreOpenDate']])
 
 # Check numeric conversions
 print(df[['ProductCost', 'ProductPrice']])
