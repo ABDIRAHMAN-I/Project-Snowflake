@@ -1,4 +1,4 @@
-﻿CustomerID,Sum of OrderNumber,ProductID,Sum of Quantity,StoreID,Count of TransactionID
+CustomerID,OrderNumber,ProductID,Quantity,StoreID,TransactionID
 4174,1462019,82,1,0,1
 4174,1462019,434,7,0,1
 4174,1462019,1772,2,0,1

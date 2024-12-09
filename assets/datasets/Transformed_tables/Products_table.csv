@@ -1,4 +1,4 @@
-﻿ProductBrand,ProductCategory,ProductColor,ProductCost,ProductID,ProductName,ProductPrice
+ProductBrand,ProductCategory,ProductColor,ProductCost,ProductID,ProductName,ProductPrice
 A. Datum,Cameras and camcorders,Blue,143.48,1070,A. Datum SLR Camera M141 Blue,312
 A. Datum,Cameras and camcorders,Green,76.53,1027,A. Datum Full Frame Digital Camera X300 Green,231
 A. Datum,Cameras and camcorders,Orange,143.48,1074,A. Datum SLR Camera M142 Orange,312
@@ -29,10 +29,10 @@ Contoso,Computers,Silver,137.5,606,Contoso Screen 113in M251 Silver,299
 Contoso,Home Appliances,Grey,210.72,2369,Contoso Air conditioner 25000BTU L1672 Grey,635.99
 Contoso,Home Appliances,Silver,363.75,2102,Contoso Water Heater 4.0GPM M1250 Silver,791
 Contoso,Home Appliances,White,343.05,2129,Contoso Coffee Maker Auto 10C M1000 White,745.99
-Contoso,"Music, Movies and Audio Books",Black,82.77,1647,Contoso DVD 12-Inch Player Portable M400 Black,179.99
-Contoso,"Music, Movies and Audio Books",Blue,26.62,1644,Contoso DVD External DVD Burner M200 Blue,57.88
-Contoso,"Music, Movies and Audio Books",Red,6.39,1638,Contoso DVD 58 DVD Storage Binder M55 Red,13.89
-Contoso,"Music, Movies and Audio Books",Silver,26.62,1645,Contoso DVD External DVD Burner M200 Silver,57.88
+Contoso,Music  Movies and Audio Books,Black,82.77,1647,Contoso DVD 12-Inch Player Portable M400 Black,179.99
+Contoso,Music  Movies and Audio Books,Blue,26.62,1644,Contoso DVD External DVD Burner M200 Blue,57.88
+Contoso,Music  Movies and Audio Books,Red,6.39,1638,Contoso DVD 58 DVD Storage Binder M55 Red,13.89
+Contoso,Music  Movies and Audio Books,Silver,26.62,1645,Contoso DVD External DVD Burner M200 Silver,57.88
 Fabrikam,Cameras and camcorders,Orange,81.57,1191,"Fabrikam Social Videographer 2/3"" 17mm E100 Orange",160
 Fabrikam,Cameras and camcorders,Orange,523.49,1157,"Fabrikam Independent Filmmaker 1/2"" 3mm X300 Orange",1580
 Fabrikam,Cameras and camcorders,White,385.37,1242,Fabrikam Business Videographer 2/3'' 17mm M280 White,838
@@ -51,11 +51,11 @@ Proseware,Computers,Grey,40.28,677,Proseware Fax Machine E100 Grey,79
 Proseware,Computers,Silver,827.97,564,Proseware Projector 1080p DLP86 Silver,2499
 Southridge Video,Games and Toys,Red,2.54,1701,SV Hand Games for 12-16 boys E60 Red,4.98
 Southridge Video,Games and Toys,Silver,3.56,1704,SV Hand Games for students E40 Silver,6.99
-Southridge Video,"Music, Movies and Audio Books",Black,6.39,1583,SV DVD 58 DVD Storage Binder M55 Black,13.89
-Southridge Video,"Music, Movies and Audio Books",Black,26.62,1597,SV DVD External DVD Burner M200 Black,57.88
-Southridge Video,"Music, Movies and Audio Books",Silver,72.56,1578,SV DVD Recorder L210 Silver,219
-Southridge Video,"Music, Movies and Audio Books",Silver,86.14,1609,SV DVD 14-Inch Player Portable L100 Silver,259.99
-Southridge Video,"Music, Movies and Audio Books",White,72.56,1579,SV DVD Recorder L220 White,219
+Southridge Video,Music  Movies and Audio Books,Black,6.39,1583,SV DVD 58 DVD Storage Binder M55 Black,13.89
+Southridge Video,Music  Movies and Audio Books,Black,26.62,1597,SV DVD External DVD Burner M200 Black,57.88
+Southridge Video,Music  Movies and Audio Books,Silver,72.56,1578,SV DVD Recorder L210 Silver,219
+Southridge Video,Music  Movies and Audio Books,Silver,86.14,1609,SV DVD 14-Inch Player Portable L100 Silver,259.99
+Southridge Video,Music  Movies and Audio Books,White,72.56,1579,SV DVD Recorder L220 White,219
 Southridge Video,TV and Video,Black,29.01,177,SV 8xDVD E130 Black,56.9
 Southridge Video,TV and Video,Black,55.99,172,SV 22xDVD X680 Black,169
 Southridge Video,TV and Video,Silver,58.36,189,SV 16xDVD M360 Silver,126.9

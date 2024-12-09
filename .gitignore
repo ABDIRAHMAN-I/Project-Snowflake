@@ -79,3 +79,7 @@ terraform.rc
 .DS_Store
 
 Snowflake_script.sql
+
+test.py
+
+Split_data_into_tables.py
