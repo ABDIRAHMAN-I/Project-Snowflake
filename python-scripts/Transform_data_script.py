@@ -12,7 +12,6 @@ print (df)
 
 # Convert date columns to datetime
 df['OrderDate'] = pd.to_datetime(df['OrderDate'])
-df['DeliveryDate'] = pd.to_datetime(df['DeliveryDate'], errors='coerce')  # Coerce errors handle invalid dates
 df['CustomerDOB'] = pd.to_datetime(df['CustomerDOB'])
 df['StoreOpenDate'] = pd.to_datetime(df['StoreOpenDate'])
 
