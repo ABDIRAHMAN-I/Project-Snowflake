@@ -1,85 +1,80 @@
-# Project Snowflake: Deploying Snowflake on Cloud
+# Global Retailer Data Pipeline Project
 
 ## Overview
+This project demonstrates an end-to-end data engineering pipeline designed to process, transform, and load data for a global retailer. The pipeline involves multiple stages, including data extraction, transformation, loading, and access control setup, leveraging tools like Power BI, Snowflake, Terraform, Python, and AWS S3.
 
-**Project Snowflake** is a comprehensive project combining DevOps and Data Engineering principles to showcase the deployment and management of a Snowflake database directly on the cloud. This project highlights skills in infrastructure as code (IaC), ETL development, and CI/CD pipeline automation.
+## Key Features
+- **Data Extraction**: Downloaded CSV data from a global retailer's website.
+- **Data Modeling**: Designed a star schema data model in Power BI for efficient querying and reporting.
+- **Infrastructure Setup**:
+  - Created Snowflake warehouse, database, and schema using Terraform.
+  - Defined tables in Snowflake using SQL.
+- **Data Transformation**:
+  - Extracted and transformed data from Power BI CSV files using Python and the Pandas library.
+- **Data Storage**:
+  - Uploaded transformed data to an AWS S3 bucket using a Python script.
+- **Data Loading**:
+  - Integrated Snowflake with S3 for seamless data transfer.
+  - Created a stage in Snowflake and loaded data from the stage into the previously defined tables.
+- **Access Control**:
+  - Implemented Role-Based Access Control (RBAC) by creating roles, policies, and granting permissions in Snowflake.
 
-### The project demonstrates:
-- Deploying and provisioning Snowflake resources using Terraform.
-- Designing efficient database schemas and implementing role-based access control (RBAC).
-- Developing Python-based ETL pipelines for data ingestion and transformation.
-- Automating workflows with GitHub Actions.
+## Tools and Technologies
+- **Power BI**: Data modeling and visualization.
+- **Snowflake**: Cloud data platform for warehousing and analytics.
+- **Terraform**: Infrastructure as code for Snowflake resource creation.
+- **Python**: Data transformation and automation using Pandas.
+- **AWS S3**: Cloud storage for data staging.
+- **SQL**: Table creation and data manipulation.
+
+## Workflow
+1. **Data Extraction**: 
+   - Download CSV files containing global retailer data.
+    ![Raw-dat](./assets/images/raw-data.png)
+2. **Data Modeling**:
+   - Design a star schema in Power BI for efficient analysis.
+    ![Star-schema](./assets/images/star_schema.png)
+3. **Infrastructure Setup**:
+   - Use Terraform to create Snowflake warehouse, database, and schema.
+    ![Snowflake-infrastructure](./assets/images/snowflake-infrastructure.png)
+   - Define Snowflake tables using SQL.
+    ![Snowflake-tables](./assets/images/Snowflake-tables-1.png)
+    ![Snowflake-tables](./assets/images/Snowflake-tables-2.png)
+4. **Data Transformation**:
+   - Extract and process CSV files with Python, applying necessary transformations using Pandas.
+   ![Python-transformations](./assets/images/Python-transformations.png)
+5. **Data Storage**:
+   - Upload the transformed data to an AWS S3 bucket via a Python script.
+   ![s3-bucket](./assets/images/s3-bucket.png)
+6. **Data Loading**:
+   - Create an external stage in Snowflake to connect to S3.
+   ![External-stage](./assets/images/External-stage.png)
+   - Load data from the S3 bucket into Snowflake tables using the `COPY INTO` command.
+   ![Copy-into-tables](./assets/images/Copy-into-tables.png)
+7. **Access Control**:
+   - Define roles and permissions in Snowflake.
+   ![Roles-permissons](./assets/images/Roles-permissons.png)
+   - Grant necessary permissions to ensure secure and controlled access to data.
+   ![Grant-roles](./assets/images/Grant-roles.png)
+
+## Results
+- A fully functional data pipeline capable of handling data extraction, transformation, and loading.
+- A robust data model in Power BI, enabling detailed insights for business users.
+- Secure and scalable data storage and access management in Snowflake.
+
+## Future Improvements
+- Automate the entire pipeline using orchestration tools like Apache Airflow.
+- Implement monitoring and alerting for data pipeline health.
+- Extend the pipeline to include additional data sources and transformations.
+
+## How to Run
+1. Clone this repository.
+2. Set up the required infrastructure using Terraform scripts.
+3. Run the Python scripts to transform data and upload it to S3.
+4. Use SQL scripts to load data into Snowflake tables.
+5. Configure RBAC in Snowflake using the provided SQL scripts.
+6. Analyze the data using the Power BI star schema model.
 
 ---
 
-## Objectives
-
-1. Set up a Snowflake account for cloud-based data warehousing.
-2. Use Terraform to provision Snowflake databases, schemas, roles, and users.
-3. Design a robust database schema for handling analytical workflows.
-4. Build and execute ETL pipelines for loading and transforming data.
-5. Create a CI/CD pipeline to automate Terraform deployments and ETL jobs.
-6. Document and validate all processes to ensure functionality and clarity.
-
----
-
-## Project Features
-
-### **Cloud-Based Snowflake Deployment**
-Utilize a real Snowflake account for data warehousing and analytics, providing an authentic environment for hands-on learning.
-
-### **Infrastructure as Code**
-Manage and provision Snowflake resources using Terraform for scalability and reproducibility.
-
-### **Database Schema Design**
-Implement a logical schema design (e.g., star/snowflake schema) for optimized querying and analytics.
-
-### **ETL Pipelines**
-Python scripts handle data extraction, transformation, and loading into Snowflake, demonstrating practical data engineering workflows.
-
-### **CI/CD Automation**
-GitHub Actions automate the deployment of Terraform configurations and ETL scripts, ensuring efficient and error-free updates.
-
----
-
-## Technologies Used
-
-- **Snowflake**: Cloud-based data warehousing and analytics platform.
-- **Terraform**: Infrastructure as Code (IaC) tool for resource management.
-- **Python**: Programming language for ETL pipeline development.
-- **GitHub Actions**: CI/CD platform for automating workflows.
-
----
-
-## Architecture Diagram
-
-*(Include a link or embed an image of your architecture diagram here.)*
-
----
-
-## Getting Started
-
-### Prerequisites
-- Snowflake account credentials for Terraform configuration.
-- Terraform installed for provisioning resources.
-- Python 3.7+ for ETL development.
-
----
-
-## Setup Steps
-
-### 1. Configure Snowflake Access
-- Obtain Snowflake account details such as account name, username, and password.
-
-### 2. Deploy Snowflake Resources Using Terraform
-- Initialize Terraform and apply configurations to create databases, schemas, and roles in Snowflake:
-  ```bash
-  terraform init
-  terraform apply -auto-approve
-
-### 3. Run ETL Pipeline
-
-Use Python scripts to extract, transform, and load data into the Snowflake tables:
-
-  ```bash
-  python etl_script.py
+For detailed instructions and configurations, refer to the respective folders and scripts included in this repository.
