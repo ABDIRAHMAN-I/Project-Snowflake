@@ -1,0 +1,100 @@
+CustomerID,CustomerGender,CustomerName,CustomerCity,CustomerStateCode,CustomerState,CustomerZip,CustomerCountry,CustomerContinent,CustomerDOB
+777391,Male,Abramo Zito,Concesa,MI,Milano,20056,Italy,Europe,1990-11-02
+1861363,Male,Mike Cole,Spokane,WA,Washington,99201,United States,North America,1968-02-10
+1861363,Male,Mike Cole,Spokane,WA,Washington,99201,United States,North America,1968-02-10
+1324262,Male,Guy Brown,Rochelle Park,NJ,New Jersey,7662,United States,North America,1940-07-01
+1324262,Male,Guy Brown,Rochelle Park,NJ,New Jersey,7662,United States,North America,1940-07-01
+816932,Female,Hiu Rijkers,Veghel,NB,Noord-Brabant,5463 CR,Netherlands,Europe,1976-01-11
+816932,Female,Hiu Rijkers,Veghel,NB,Noord-Brabant,5463 CR,Netherlands,Europe,1976-01-11
+816932,Female,Hiu Rijkers,Veghel,NB,Noord-Brabant,5463 CR,Netherlands,Europe,1976-01-11
+816932,Female,Hiu Rijkers,Veghel,NB,Noord-Brabant,5463 CR,Netherlands,Europe,1976-01-11
+816932,Female,Hiu Rijkers,Veghel,NB,Noord-Brabant,5463 CR,Netherlands,Europe,1976-01-11
+1796733,Female,Staci Warren,Queens,NY,New York,11103,United States,North America,1994-08-15
+1796733,Female,Staci Warren,Queens,NY,New York,11103,United States,North America,1994-08-15
+1981433,Female,Jorja Ferrier,Brookville,IN,Indiana,47012,United States,North America,1992-02-02
+190944,Female,Sofia Thornton,LARPENT,VIC,Victoria,3249,Australia,Australia,1951-10-12
+190944,Female,Sofia Thornton,LARPENT,VIC,Victoria,3249,Australia,Australia,1951-10-12
+190944,Female,Sofia Thornton,LARPENT,VIC,Victoria,3249,Australia,Australia,1951-10-12
+1592335,Male,Jeremy Taylor,Hattiesburg,MS,Mississippi,39402,United States,North America,1979-01-06
+1535347,Male,Elmer Spada,Machias,ME,Maine,4654,United States,North America,1995-03-09
+1535347,Male,Elmer Spada,Machias,ME,Maine,4654,United States,North America,1995-03-09
+267691,Male,Michael Wilson,Regina,SK,Saskatchewan,S4S 2R3,Canada,North America,1937-11-18
+756504,Male,Boris Ferri,San Piero A Ponti,FI,Firenze,50017,Italy,Europe,1961-10-20
+524021,Male,Kristian SchrÃ¶der,Altenmarkt,BY,Freistaat Bayern,83350,Germany,Europe,1990-03-01
+1981968,Female,Sandra Kortig,Richmond,VA,Virginia,23227,United States,North America,1977-09-25
+536368,Male,Michael Schuster,Kiedrich,HE,Hessen,65399,Germany,Europe,1989-08-02
+536368,Male,Michael Schuster,Kiedrich,HE,Hessen,65399,Germany,Europe,1989-08-02
+536368,Male,Michael Schuster,Kiedrich,HE,Hessen,65399,Germany,Europe,1989-08-02
+536368,Male,Michael Schuster,Kiedrich,HE,Hessen,65399,Germany,Europe,1989-08-02
+1810547,Male,Charles Burdette,San Antonio,TX,Texas,78213,United States,North America,1938-12-15
+4174,Female,Rebecca Yelverton,OCEAN REEF,WA,Western Australia,6027,Australia,Australia,1990-10-05
+4174,Female,Rebecca Yelverton,OCEAN REEF,WA,Western Australia,6027,Australia,Australia,1990-10-05
+4174,Female,Rebecca Yelverton,OCEAN REEF,WA,Western Australia,6027,Australia,Australia,1990-10-05
+973370,Female,Georgina Hunter,PONDERSBRIDGE,Peterborough,Peterborough,PE17 1SX,United Kingdom,Europe,1993-04-20
+973370,Female,Georgina Hunter,PONDERSBRIDGE,Peterborough,Peterborough,PE17 1SX,United Kingdom,Europe,1993-04-20
+1460974,Female,Joan Webster,Ephrata,PA,Pennsylvania,17522,United States,North America,1941-05-23
+1460974,Female,Joan Webster,Ephrata,PA,Pennsylvania,17522,United States,North America,1941-05-23
+1460974,Female,Joan Webster,Ephrata,PA,Pennsylvania,17522,United States,North America,1941-05-23
+1460974,Female,Joan Webster,Ephrata,PA,Pennsylvania,17522,United States,North America,1941-05-23
+302645,Male,Eric Ortez,Brockville,ON,Ontario,K6V 4X4,Canada,North America,1985-11-07
+302645,Male,Eric Ortez,Brockville,ON,Ontario,K6V 4X4,Canada,North America,1985-11-07
+1297782,Male,Brandon Call,New York,NY,New York,10016,United States,North America,1955-09-02
+1327821,Female,Danielle Elder,Westland,MI,Michigan,48185,United States,North America,1944-11-26
+1316702,Male,Joshua Johnson,Kansas City,MO,Missouri,64106,United States,North America,1953-09-13
+1316702,Male,Joshua Johnson,Kansas City,MO,Missouri,64106,United States,North America,1953-09-13
+1316702,Male,Joshua Johnson,Kansas City,MO,Missouri,64106,United States,North America,1953-09-13
+1414205,Female,Sylvia Alvarez,Indianapolis,IN,Indiana,46254,United States,North America,1976-09-25
+1498031,Male,Wm Ferguson,Lafayette,LA,Louisiana,70501,United States,North America,1972-10-02
+526851,Female,Jana KÃ¶nig,Drage,NI,Niedersachsen,21423,Germany,Europe,1996-01-01
+526851,Female,Jana KÃ¶nig,Drage,NI,Niedersachsen,21423,Germany,Europe,1996-01-01
+526851,Female,Jana KÃ¶nig,Drage,NI,Niedersachsen,21423,Germany,Europe,1996-01-01
+526851,Female,Jana KÃ¶nig,Drage,NI,Niedersachsen,21423,Germany,Europe,1996-01-01
+784331,Male,Crescenzo Bellucci,Villa Ganzerla,VI,Vicenza,36020,Italy,Europe,1986-10-04
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+322558,Female,Helen Cooper,St Catharines,ON,Ontario,L2R 3H6,Canada,North America,1981-04-19
+1633913,Male,Allen Rogers,Cedar City,UT,Utah,84720,United States,North America,1971-09-16
+1495716,Male,Timothy Alvarez,San Jose,CA,California,95113,United States,North America,1961-10-07
+1495716,Male,Timothy Alvarez,San Jose,CA,California,95113,United States,North America,1961-10-07
+1495716,Male,Timothy Alvarez,San Jose,CA,California,95113,United States,North America,1961-10-07
+1531046,Female,Rebekah Brisco,Springfield,IL,Illinois,62701,United States,North America,1994-05-24
+1531046,Female,Rebekah Brisco,Springfield,IL,Illinois,62701,United States,North America,1994-05-24
+1531046,Female,Rebekah Brisco,Springfield,IL,Illinois,62701,United States,North America,1994-05-24
+1186120,Female,Danielle Horton,EDIAL,Lichfield,Lichfield,WS7 0WP,United Kingdom,Europe,1994-06-15
+1186120,Female,Danielle Horton,EDIAL,Lichfield,Lichfield,WS7 0WP,United Kingdom,Europe,1994-06-15
+1186120,Female,Danielle Horton,EDIAL,Lichfield,Lichfield,WS7 0WP,United Kingdom,Europe,1994-06-15
+1410548,Male,Mark Hillman,Cairo (Allen),OH,Ohio,45820,United States,North America,1936-07-17
+1410548,Male,Mark Hillman,Cairo (Allen),OH,Ohio,45820,United States,North America,1936-07-17
+1410548,Male,Mark Hillman,Cairo (Allen),OH,Ohio,45820,United States,North America,1936-07-17
+1410548,Male,Mark Hillman,Cairo (Allen),OH,Ohio,45820,United States,North America,1936-07-17
+921229,Male,Sam Lord,POLYPHANT,Cornwall,Cornwall,PL15 8TD,United Kingdom,Europe,1981-01-20
+938615,Male,Connor Brookes,LLANDRINIO,Powys,Powys,SY22 3JW,United Kingdom,Europe,1955-08-23
+938615,Male,Connor Brookes,LLANDRINIO,Powys,Powys,SY22 3JW,United Kingdom,Europe,1955-08-23
+802757,Male,Ferdie Berghorst,Weiteveen,DR,Drenthe,7765 AW,Netherlands,Europe,1981-12-01
+802757,Male,Ferdie Berghorst,Weiteveen,DR,Drenthe,7765 AW,Netherlands,Europe,1981-12-01
+802757,Male,Ferdie Berghorst,Weiteveen,DR,Drenthe,7765 AW,Netherlands,Europe,1981-12-01
+802757,Male,Ferdie Berghorst,Weiteveen,DR,Drenthe,7765 AW,Netherlands,Europe,1981-12-01
+802757,Male,Ferdie Berghorst,Weiteveen,DR,Drenthe,7765 AW,Netherlands,Europe,1981-12-01
+1022320,Female,Eve Humphries,KNOCK OF AUCHNAHANNET,Highland,Highland,PH26 5HX,United Kingdom,Europe,1982-03-10
+1951406,Male,Jessie Campbell,West Palm Beach,FL,Florida,33401,United States,North America,1969-04-17
+341191,Female,Dona Williams,Calgary,AB,Alberta,T2R 0A9,Canada,North America,1956-11-26
+341191,Female,Dona Williams,Calgary,AB,Alberta,T2R 0A9,Canada,North America,1956-11-26
+1720405,Female,Joyce Munoz,Austin,TX,Texas,78701,United States,North America,1965-01-14
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+1499604,Male,Richard Green,Chicago,IL,Illinois,60601,United States,North America,1979-06-16
+791825,Female,Clotilde Schiavone,Barbarasco,MS,Massa,54012,Italy,Europe,1992-02-24
+791825,Female,Clotilde Schiavone,Barbarasco,MS,Massa,54012,Italy,Europe,1992-02-24
+791825,Female,Clotilde Schiavone,Barbarasco,MS,Massa,54012,Italy,Europe,1992-02-24
+791825,Female,Clotilde Schiavone,Barbarasco,MS,Massa,54012,Italy,Europe,1992-02-24
+1318857,Male,Bryant Jenkins,Clarksburg,WV,West Virginia,26301,United States,North America,1944-12-21
+1318857,Male,Bryant Jenkins,Clarksburg,WV,West Virginia,26301,United States,North America,1944-12-21
+1318857,Male,Bryant Jenkins,Clarksburg,WV,West Virginia,26301,United States,North America,1944-12-21
