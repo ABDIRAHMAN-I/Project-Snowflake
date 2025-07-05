@@ -1,0 +1,57 @@
+
+services:
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+
+
+  webserver:
+    image: apache/airflow:2.8.1
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__WEBSERVER__SECRET_KEY: mysecretkey
+      AIRFLOW__CORE__FERNET_KEY: KrB0G5S78yIrCppQLt7biXt1Fy01AXqO0UzZ-0aCC14=
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./python_scripts:/opt/airflow/python_scripts
+      - ./assets/datasets:/opt/airflow/assets/datasets
+
+
+    ports:
+      - "8080:8080"
+    command: bash -c "pip install boto3 && airflow webserver"
+
+  scheduler:
+    image: apache/airflow:2.8.1
+    depends_on:
+      - webserver
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./python_scripts:/opt/airflow/python_scripts
+      - ./assets/datasets:/opt/airflow/assets/datasets
+
+    command: bash -c "pip install boto3 && airflow scheduler"
+
+volumes:
+  postgres-db-volume:
