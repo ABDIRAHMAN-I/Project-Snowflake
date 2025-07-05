@@ -1,80 +1,196 @@
-# Global Retailer Data Pipeline Project
+# ❄️ Project Snowflake – Scalable Data Pipeline with Airflow, Snowflake, S3, and Terraform
 
-## Overview
-This project demonstrates an end-to-end data engineering pipeline designed to process, transform, and load data for a global retailer. The pipeline involves multiple stages, including data extraction, transformation, loading, and access control setup, leveraging tools like Power BI, Snowflake, Terraform, Python, and AWS S3.
+This project sets up an end-to-end data pipeline that transforms raw CSV data, splits it into domain-specific tables, uploads it to Amazon S3, and loads it into Snowflake — all automated through Apache Airflow and deployed using Terraform.
 
-## Key Features
-- **Data Extraction**: Downloaded CSV data from a global retailer's website.
-- **Data Modeling**: Designed a star schema data model in Power BI for efficient querying and reporting.
-- **Infrastructure Setup**:
-  - Created Snowflake warehouse, database, and schema using Terraform.
-  - Defined tables in Snowflake using SQL.
-- **Data Transformation**:
-  - Extracted and transformed data from Power BI CSV files using Python and the Pandas library.
-- **Data Storage**:
-  - Uploaded transformed data to an AWS S3 bucket using a Python script.
-- **Data Loading**:
-  - Integrated Snowflake with S3 for seamless data transfer.
-  - Created a stage in Snowflake and loaded data from the stage into the previously defined tables.
-- **Access Control**:
-  - Implemented Role-Based Access Control (RBAC) by creating roles, policies, and granting permissions in Snowflake.
-
-## Tools and Technologies
-- **Power BI**: Data modeling and visualization.
-- **Snowflake**: Cloud data platform for warehousing and analytics.
-- **Terraform**: Infrastructure as code for Snowflake resource creation.
-- **Python**: Data transformation and automation using Pandas.
-- **AWS S3**: Cloud storage for data staging.
-- **SQL**: Table creation and data manipulation.
-
-## Workflow
-1. **Data Extraction**: 
-   - Download CSV files containing global retailer data.
-    ![Raw-dat](./assets/images/raw-data.png)
-2. **Data Modeling**:
-   - Design a star schema in Power BI for efficient analysis.
-    ![Star-schema](./assets/images/star_schema.png)
-3. **Infrastructure Setup**:
-   - Use Terraform to create Snowflake warehouse, database, and schema.
-    ![Snowflake-infrastructure](./assets/images/snowflake-infrastructure.png)
-   - Define Snowflake tables using SQL.
-    ![Snowflake-tables](./assets/images/Snowflake-tables-1.png)
-    ![Snowflake-tables](./assets/images/Snowflake-tables-2.png)
-4. **Data Transformation**:
-   - Extract and process CSV files with Python, applying necessary transformations using Pandas.
-   ![Python-transformations](./assets/images/Python-transformations.png)
-5. **Data Storage**:
-   - Upload the transformed data to an AWS S3 bucket via a Python script.
-   ![s3-bucket](./assets/images/s3-bucket.png)
-6. **Data Loading**:
-   - Create an external stage in Snowflake to connect to S3.
-   ![External-stage](./assets/images/External-stage.png)
-   - Load data from the S3 bucket into Snowflake tables using the `COPY INTO` command.
-   ![Copy-into-tables](./assets/images/Copy-into-tables.png)
-7. **Access Control**:
-   - Define roles and permissions in Snowflake.
-   ![Roles-permissons](./assets/images/Roles-permissons.png)
-   - Grant necessary permissions to ensure secure and controlled access to data.
-   ![Grant-roles](./assets/images/Grant-roles.png)
-
-## Results
-- A fully functional data pipeline capable of handling data extraction, transformation, and loading.
-- A robust data model in Power BI, enabling detailed insights for business users.
-- Secure and scalable data storage and access management in Snowflake.
-
-## Future Improvements
-- Automate the entire pipeline using orchestration tools like Apache Airflow.
-- Implement monitoring and alerting for data pipeline health.
-- Extend the pipeline to include additional data sources and transformations.
-
-## How to Run
-1. Clone this repository.
-2. Set up the required infrastructure using Terraform scripts.
-3. Run the Python scripts to transform data and upload it to S3.
-4. Use SQL scripts to load data into Snowflake tables.
-5. Configure RBAC in Snowflake using the provided SQL scripts.
-6. Analyze the data using the Power BI star schema model.
+The pipeline is modular, production-ready, and built with repeatability and clarity in mind.
 
 ---
 
-For detailed instructions and configurations, refer to the respective folders and scripts included in this repository.
+## 💡 Architecture Diagram
+
+![Architecture](./images/snowflake_pipeline_architecture.png)
+
+> A visual overview of the pipeline from data ingestion to Snowflake loading.
+
+---
+
+## 🚀 Overview
+
+This project includes:
+
+* Python scripts for data transformation and splitting
+* Airflow DAG to orchestrate the ETL flow
+* Terraform code to provision snowflake warehouse, database, tables, etc
+* Environment-managed secrets for security
+* Docker-Compose to run airflow
+
+---
+
+## 💻 Local Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/<your-username>/project-snowflake.git
+   cd project-snowflake
+   ```
+
+2. Spin up Airflow using Docker Compose:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Upload a CSV to:
+
+   ```
+   ./assets/datasets/Original_file/
+   ```
+
+4. Open Airflow UI:
+
+   ```
+   http://localhost:8080
+   ```
+
+5. Trigger the DAG:
+
+   ```
+   snowflake_etl_pipeline
+   ```
+
+---
+
+## 🧱 Key Components
+
+| Tool               | Role                                                                  |
+| ------------------ | --------------------------------------------------------------------- |
+| **Apache Airflow** | Orchestrates the ETL flow in DAG steps                                |
+| **Snowflake**      | Data warehouse used for final storage and analysis                    |
+| **S3**             | Temporary staging layer for processed CSVs                            |
+| **Terraform**      | Provisions infrastructure like S3, IAM roles, and Snowflake resources |
+| **Docker**         | Containerises Airflow and its components                              |
+| **GitHub Actions** | Automates Docker builds, Terraform applies (optional)                 |
+
+---
+
+## 📁 Directory Structure
+
+```
+project-snowflake/
+│
+├── dags/                         # Airflow DAG definitions
+├── python_scripts/              # Python ETL scripts
+├── assets/
+│   └── datasets/
+│       ├── Original_file/       # Raw uploaded files
+│       ├── Transformed_full/    # Cleaned and normalised output
+│       └── Split_files/         # Domain-specific split tables
+├── terraform/                   # Infrastructure as Code
+├── docker-compose.yml           # Airflow local setup
+├── .env                         # Snowflake and AWS credentials
+└── README.md                    # This file
+```
+
+---
+
+## 🔐 Environment Configuration
+
+Your `.env` should include:
+
+```env
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+SNOWFLAKE_USER=
+SNOWFLAKE_PASSWORD=
+SNOWFLAKE_ACCOUNT=
+SNOWFLAKE_WAREHOUSE=
+SNOWFLAKE_DATABASE=
+SNOWFLAKE_SCHEMA=
+SNOWFLAKE_ROLE=
+```
+
+---
+
+## 🧺 Step-by-Step Guide
+
+### 1. 🛠️ Configure Snowflake
+
+Create the following manually or via Terraform:
+
+* Database
+* Schema
+* Role with appropriate privileges
+* Warehouse
+
+> Optional: Use Terraform modules to automate this setup.
+
+---
+
+### 2. 📄 Upload a CSV to `Original_file`
+
+Put your raw CSV in:
+
+```
+assets/datasets/Original_file/
+```
+
+---
+
+### 3. 🥪 Run the Airflow Pipeline
+
+* Open Airflow: `http://localhost:8080`
+* Trigger DAG: `snowflake_etl_pipeline`
+
+Pipeline Steps:
+
+1. **transform\_data** – Cleans and normalises the data
+2. **split\_into\_tables** – Splits it by domain (e.g., Customers, Orders, etc.)
+3. **upload\_to\_s3** – Uploads files to your specified S3 bucket
+4. **load\_into\_snowflake** – Loads files from S3 into Snowflake using `COPY INTO`
+
+---
+
+### 4. 📒 SQL File (load\_data.sql)
+
+Ensure this file exists at:
+
+```
+/opt/airflow/dags/sql/load_data.sql
+```
+
+Example SQL snippet:
+
+```sql
+COPY INTO SALES_DATA
+FROM @my_s3_stage
+FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY='"')
+PATTERN = '.*sales.*.csv';
+```
+
+---
+
+## ⚙️ Terraform Setup (Optional)
+
+To provision S3, IAM, and Snowflake resources:
+
+```bash
+cd terraform
+terraform init
+terraform apply -var-file="terraform.tfvars"
+```
+
+---
+
+## ✅ Result
+
+Once everything is working, you should be able to query your cleaned and structured data directly in Snowflake!
+
+Example:
+
+```sql
+SELECT * FROM CLEANED_SALES LIMIT 10;
+```
+
+---
+
