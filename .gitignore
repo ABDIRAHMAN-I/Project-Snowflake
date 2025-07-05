@@ -78,8 +78,6 @@ terraform.rc
 .terraform.lock.hcl
 .DS_Store
 
-Snowflake_script.sql
 
-test.py
-
-Split_data_into_tables.py
+# extra files to ignore 
+.env
