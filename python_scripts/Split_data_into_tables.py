@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from datetime import datetime
 
-def split_data():  # Wrap logic in this function
+def split_data():
     # Generate timestamp for versioning
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
