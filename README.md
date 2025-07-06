@@ -18,7 +18,7 @@ The pipeline is modular, production-ready, and built with repeatability and clar
 
 This project includes:
 
-* Python scripts for data transformation and splitting
+* Python scripts for data transformation, splitting and loading
 * Airflow DAG to orchestrate the ETL flow
 * Terraform code to provision snowflake warehouse, database, tables, etc
 * Environment-managed secrets for security
