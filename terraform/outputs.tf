@@ -1,12 +1,7 @@
 output "database_name" {
-  value = snowflake_database.main.name
+  value = module.database.database_name
 }
 
 output "schema_name" {
-  value = snowflake_schema.main.name
-}
-
-output "snowflake_s3_trust_policy" {
-  value       = snowflake_storage_integration.s3_integration.storage_aws_external_id
-  description = "Use this external ID when creating the IAM trust relationship for Snowflake."
+  value = module.schema.schema_name
 }
