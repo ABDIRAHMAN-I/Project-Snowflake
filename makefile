@@ -13,7 +13,7 @@ init:
 
 # Start Airflow webserver and scheduler
 start:
-	docker compose up
+	docker compose up -d
 
 # Stop all running containers
 stop:
