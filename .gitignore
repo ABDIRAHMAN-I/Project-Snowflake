@@ -81,3 +81,5 @@ terraform.rc
 
 # extra files to ignore 
 .env
+__pycache__/
+*.pyc
