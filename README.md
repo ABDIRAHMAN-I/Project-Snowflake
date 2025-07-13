@@ -20,17 +20,7 @@ A production‑grade, modular data pipeline that automates the ingestion, transf
 
 ## 🚀 Architecture
 
-```text
-📁 CSV → 🐍 Python (Transform) → 📁 Table CSVs → ☁️ S3 → 🧊 Snowflake
-                │                      │             │
-                │                      │             └─── via SQL in Airflow DAG
-                │                      └─── upload_data_to_s3_bucket.py
-                └─── transform_data_script.py ➜ split_data_into_tables.py
-
-            ┌──────────────┐
-            │   Airflow    │ ◀── Orchestrates pipeline
-            └──────────────┘
-```
+![Architecture Diagram](/assets/images/snowflake_architecture.png) 
 
 ### 🧰 Tech Stack
 
