@@ -1,196 +1,179 @@
-# ❄️ Project Snowflake – Scalable Data Pipeline with Airflow, Snowflake, S3, and Terraform
+# ❄️ Project Snowflake — End‑to‑End ETL Pipeline with Airflow, Snowflake, and Terraform
 
-This project sets up an end-to-end data pipeline that transforms raw CSV data, splits it into domain-specific tables, uploads it to Amazon S3, and loads it into Snowflake — all automated through Apache Airflow and deployed using Terraform.
-
-The pipeline is modular, production-ready, and built with repeatability and clarity in mind.
+A production‑grade, modular data pipeline that automates the ingestion, transformation, and loading of retailer data into Snowflake using **Python**, **Airflow**, **Terraform**, and **Docker**. Ideal for data engineers, DevOps engineers, and DataOps workflows.
 
 ---
 
-## 💡 Architecture Diagram
+## 📸 Overview
 
-![Architecture](./images/snowflake_pipeline_architecture.png)
+**Project Snowflake** automates the entire data lifecycle:
 
-> A visual overview of the pipeline from data ingestion to Snowflake loading.
-
----
-
-## 🚀 Overview
-
-This project includes:
-
-* Python scripts for data transformation, splitting and loading
-* Airflow DAG to orchestrate the ETL flow
-* Terraform code to provision snowflake warehouse, database, tables, etc
-* Environment-managed secrets for security
-* Docker-Compose to run airflow
+1. 🧼 **Transform** raw CSV data
+2. ✂️ **Split** transformed data into logical tables
+3. ☁️ **Upload** tables to Amazon S3
+4. 🏔️ **Load** the final data into **Snowflake** using SQL scripts
+5. ⚙️ All orchestrated by **Airflow DAGs**
+6. 🏗️ Infrastructure managed via **Terraform**
+7. 🐳 Runs in a self‑contained **Docker Compose** environment
 
 ---
 
-## 💻 Local Setup
+## 🚀 Architecture
 
-1. Clone the repository:
+```text
+📁 CSV → 🐍 Python (Transform) → 📁 Table CSVs → ☁️ S3 → 🧊 Snowflake
+                │                      │             │
+                │                      │             └─── via SQL in Airflow DAG
+                │                      └─── upload_data_to_s3_bucket.py
+                └─── transform_data_script.py ➜ split_data_into_tables.py
 
-   ```bash
-   git clone https://github.com/<your-username>/project-snowflake.git
-   cd project-snowflake
-   ```
-
-2. Spin up Airflow using Docker Compose:
-
-   ```bash
-   docker-compose up -d
-   ```
-
-3. Upload a CSV to:
-
-   ```
-   ./assets/datasets/Original_file/
-   ```
-
-4. Open Airflow UI:
-
-   ```
-   http://localhost:8080
-   ```
-
-5. Trigger the DAG:
-
-   ```
-   snowflake_etl_pipeline
-   ```
-
----
-
-## 🧱 Key Components
-
-| Tool               | Role                                                                  |
-| ------------------ | --------------------------------------------------------------------- |
-| **Apache Airflow** | Orchestrates the ETL flow in DAG steps                                |
-| **Snowflake**      | Data warehouse used for final storage and analysis                    |
-| **S3**             | Temporary staging layer for processed CSVs                            |
-| **Terraform**      | Provisions infrastructure like S3, IAM roles, and Snowflake resources |
-| **Docker**         | Containerises Airflow and its components                              |
-| **GitHub Actions** | Automates Docker builds, Terraform applies (optional)                 |
-
----
-
-## 📁 Directory Structure
-
+            ┌──────────────┐
+            │   Airflow    │ ◀── Orchestrates pipeline
+            └──────────────┘
 ```
-project-snowflake/
+
+### 🧰 Tech Stack
+
+| Tool      | Purpose                                     |
+| --------- | ------------------------------------------- |
+| Python    | ETL scripts                                 |
+| Airflow   | DAG orchestration                           |
+| Docker    | Containerisation and environment isolation  |
+| Snowflake | Data warehouse                              |
+| Terraform | Infrastructure provisioning (Snowflake IaC) |
+| S3        | Cloud storage (intermediate staging)        |
+
+### 🗂️ Folder Structure
+
+```text
+Project-Snowflake/
 │
-├── dags/                         # Airflow DAG definitions
-├── python_scripts/              # Python ETL scripts
-├── assets/
-│   └── datasets/
-│       ├── Original_file/       # Raw uploaded files
-│       ├── Transformed_full/    # Cleaned and normalised output
-│       └── Split_files/         # Domain-specific split tables
-├── terraform/                   # Infrastructure as Code
-├── docker-compose.yml           # Airflow local setup
-├── .env                         # Snowflake and AWS credentials
-└── README.md                    # This file
+├── airflow/
+│   ├── dags/
+│   │   ├── etl_snowflake_pipeline.py     ◀── Main DAG
+│   │   └── sql_scripts/load_data.sql     ◀── SQL for Snowflake loading
+│   ├── logs/
+│   └── plugins/
+│
+├── assets/datasets/
+│   ├── Original_file/                    ◀── Raw CSVs
+│   ├── Transformed_full/                 ◀── Cleaned CSVs
+│   └── Transformed_tables/               ◀── Split tables
+│
+├── python_scripts/
+│   ├── transform_data_script.py          ◀── Cleans and transforms data
+│   ├── split_data_into_tables.py         ◀── Splits data into logical tables
+│   ├── upload_data_to_s3_bucket.py       ◀── Uploads to S3
+│   └── run_sql_script.py                 ◀── Executes SQL (now used in DAG)
+│
+├── terraform/
+│   ├── main.tf / variables.tf / modules/ ◀── IaC: schema, warehouse, tables, stage, integration
+│
+├── docker-compose.yaml                   ◀── Runs Airflow + Postgres
+├── Makefile                              ◀── CLI for common tasks
+├── .env                                  ◀── Env vars (used by Docker/Airflow)
+└── README.md
 ```
 
 ---
 
-## 🔐 Environment Configuration
+## ⚙️ How It Works
 
-Your `.env` should include:
+### 🔄 DAG: `snowflake_etl_pipeline`
 
-```env
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-SNOWFLAKE_USER=
-SNOWFLAKE_PASSWORD=
-SNOWFLAKE_ACCOUNT=
-SNOWFLAKE_WAREHOUSE=
-SNOWFLAKE_DATABASE=
-SNOWFLAKE_SCHEMA=
-SNOWFLAKE_ROLE=
-```
+| Task ID               | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| `transform_data`      | Cleans raw CSV using Pandas                            |
+| `split_into_tables`   | Splits cleaned data by entity (e.g. orders, products)  |
+| `upload_to_s3`        | Uploads split CSVs to the S3 bucket                    |
+| `load_into_snowflake` | Executes SQL script to load staged data into Snowflake |
+
+Airflow handles retries, logging, and task chaining automatically.
 
 ---
 
-## 🧺 Step-by-Step Guide
+## 🏁 Setup Instructions
 
-### 1. 🛠️ Configure Snowflake
+### ✅ 1. Clone & Environment Setup
 
-Create the following manually or via Terraform:
-
-* Database
-* Schema
-* Role with appropriate privileges
-* Warehouse
-
-> Optional: Use Terraform modules to automate this setup.
-
----
-
-### 2. 📄 Upload a CSV to `Original_file`
-
-Put your raw CSV in:
-
-```
-assets/datasets/Original_file/
+```bash
+git clone https://github.com/yourusername/project-snowflake.git
+cd project-snowflake
+cp .env.example .env  # Edit AWS keys and other secrets
 ```
 
----
+### 🐳 2. Start Airflow with Docker Compose
 
-### 3. 🥪 Run the Airflow Pipeline
-
-* Open Airflow: `http://localhost:8080`
-* Trigger DAG: `snowflake_etl_pipeline`
-
-Pipeline Steps:
-
-1. **transform\_data** – Cleans and normalises the data
-2. **split\_into\_tables** – Splits it by domain (e.g., Customers, Orders, etc.)
-3. **upload\_to\_s3** – Uploads files to your specified S3 bucket
-4. **load\_into\_snowflake** – Loads files from S3 into Snowflake using `COPY INTO`
-
----
-
-### 4. 📒 SQL File (load\_data.sql)
-
-Ensure this file exists at:
-
-```
-/opt/airflow/dags/sql/load_data.sql
+```bash
+make start
 ```
 
-Example SQL snippet:
+Runs Airflow, Postgres, and all required services.
 
-```sql
-COPY INTO SALES_DATA
-FROM @my_s3_stage
-FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY='"')
-PATTERN = '.*sales.*.csv';
-```
-
----
-
-## ⚙️ Terraform Setup (Optional)
-
-To provision S3, IAM, and Snowflake resources:
+### 🛠️ 3. Provision Snowflake Infrastructure with Terraform
 
 ```bash
 cd terraform
 terraform init
-terraform apply -var-file="terraform.tfvars"
+terraform apply
+```
+
+Creates:
+
+* Warehouse
+* Database
+* Schema
+* Tables
+* External Stage
+* Integration
+
+### 🌐 4. Configure Airflow Connection in the UI
+
+Open **Admin → Connections** in the Airflow web UI (`http://localhost:8080`):
+
+* **Connection ID**: `snowflake_default`
+* **Connection Type**: `Snowflake`
+
+Fill in credentials & **Extra** like:
+
+```json
+{
+  "account": "your_account",
+  "warehouse": "your_warehouse",
+  "database": "your_database",
+  "role": "your_role"
+}
 ```
 
 ---
 
-## ✅ Result
+## 🧪 Running the Pipeline
 
-Once everything is working, you should be able to query your cleaned and structured data directly in Snowflake!
-
-Example:
-
-```sql
-SELECT * FROM CLEANED_SALES LIMIT 10;
-```
+1. Place your raw CSV files into `assets/datasets/Original_file/`.
+2. Trigger the **`snowflake_etl_pipeline`** DAG in the Airflow UI.
+3. Monitor tasks as they progress: **transform ➝ split ➝ upload ➝ load**.
+4. View the final data in Snowflake.
 
 ---
 
+## 📈 Future Enhancements
+
+* 🧪 Add data validation with **Great Expectations**
+* 🔁 Enable scheduling (daily/weekly)
+* 📁 Archive old processed files
+* 🔐 Add secret manager integration (AWS Secrets Manager or HashiCorp Vault)
+* 📊 Connect **Power BI** or **Streamlit** for reporting
+* 📦 Convert this into a reusable **cookiecutter** template
+
+---
+
+## 👨‍💻 Author
+
+**Abdirahman I.** — DataOps/DevOps Engineer
+“I believe pipelines should be *reproducible, testable, and secure by design*.”
+
+---
+
+## 📜 Licence
+
+MIT Licence — free to use, modify, and learn from.
