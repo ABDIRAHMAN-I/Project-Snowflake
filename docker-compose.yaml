@@ -1,8 +1,8 @@
-
 services:
 
   postgres:
     image: postgres:13
+    container_name: airflow-postgres
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -11,47 +11,72 @@ services:
       - "5432:5432"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
-
+    networks:
+      - airflow-network
 
   webserver:
     image: apache/airflow:2.8.1
+    container_name: airflow-webserver
     depends_on:
       - postgres
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
       AIRFLOW__WEBSERVER__SECRET_KEY: mysecretkey
       AIRFLOW__CORE__FERNET_KEY: KrB0G5S78yIrCppQLt7biXt1Fy01AXqO0UzZ-0aCC14=
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
+      AIRFLOW__LOGGING__REMOTE_LOGGING: 'False'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./python_scripts:/opt/airflow/python_scripts
       - ./assets/datasets:/opt/airflow/assets/datasets
-
-
+      - ./.env:/opt/airflow/.env
+      - airflow-logs:/opt/airflow/logs
     ports:
       - "8080:8080"
-    command: bash -c "pip install boto3 && airflow webserver"
+    command: bash -c "
+      pip install boto3 snowflake-connector-python python-dotenv &&
+      airflow db init &&
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com &&
+      airflow webserver"
+    networks:
+      - airflow-network
 
   scheduler:
     image: apache/airflow:2.8.1
+    container_name: airflow-scheduler
     depends_on:
       - webserver
       - postgres
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
+      AIRFLOW__WEBSERVER__SECRET_KEY: mysecretkey
+      AIRFLOW__CORE__FERNET_KEY: KrB0G5S78yIrCppQLt7biXt1Fy01AXqO0UzZ-0aCC14=
+      AIRFLOW__LOGGING__REMOTE_LOGGING: 'False'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./python_scripts:/opt/airflow/python_scripts
       - ./assets/datasets:/opt/airflow/assets/datasets
-
-    command: bash -c "pip install boto3 && airflow scheduler"
+      - ./.env:/opt/airflow/.env
+      - airflow-logs:/opt/airflow/logs
+    command: bash -c "
+      pip install boto3 snowflake-connector-python python-dotenv &&
+      sleep 30 &&
+      airflow scheduler"
+    networks:
+      - airflow-network
 
 volumes:
   postgres-db-volume:
+  airflow-logs:
+
+networks:
+  airflow-network:
+    driver: bridge
