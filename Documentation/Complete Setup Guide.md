@@ -1,4 +1,4 @@
-# 🏔️ Snowflake ETL Pipeline - Complete Setup Guide
+# Snowflake ETL Pipeline - Complete Setup Guide
 
 A step-by-step guide to set up and run the end-to-end ETL pipeline with Airflow, Snowflake, and Terraform.
 
